@@ -1,5 +1,6 @@
 package main.domain.components;
 
+import main.domain.datastructures.LevelInfo;
 import main.domain.gameobjects.*;
 
 import main.domain.components.ObjectCreationHandler;
@@ -24,7 +25,9 @@ public class ObjectCreationHandlerTest {
 		int pixelModifierY = 0;
 		int difficulty = 2;
 
-		ArrayList<GameObject> objects = handler.createObjects(levelData, pixelModifierX, pixelModifierY, difficulty);
+		LevelInfo levelInfo = new LevelInfo(levelData, pixelModifierX, pixelModifierY, difficulty);
+
+		ArrayList<GameObject> objects = handler.createObjects(levelInfo);
 
 		assertEquals(12, objects.size()); // Assuming the expected count of objects
 

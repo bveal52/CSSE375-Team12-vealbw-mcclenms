@@ -31,32 +31,56 @@ public class ObjectCreationHandler {
     private GameObject createGameObject(String type, int col, int row, LevelInfo levelInfo) {
         switch (type) {
             case "Player":
-                return new Player(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), levelInfo.getDifficulty());
+                return createPlayer(col, row, levelInfo);
             case "E1":
-                return new Enemy(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 0);
+                return createEnemy(col, row, 0, levelInfo);
             case "E2":
-                return new Enemy(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 1);
+                return createEnemy(col, row, 1, levelInfo);
             case "D1":
-                return new Asteroid(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 1);
+                return createAsteroid(col, row, 1, levelInfo);
             case "D2":
-                return new Asteroid(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 2);
+                return createAsteroid(col, row, 2, levelInfo);
             case "P1":
-                return new PowerUp(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 0);
+                return createPowerUp(col, row, 0, levelInfo);
             case "P2":
-                return new PowerUp(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 1);
+                return createPowerUp(col, row, 1, levelInfo);
             case "F":
-                return new Fuel(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 0);
+                return createFuel(col, row, 0, levelInfo);
             case "Part1":
-                return new Fuel(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 1);
+                return createFuel(col, row, 1, levelInfo);
             case "Part2":
-                return new Fuel(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 2);
+                return createFuel(col, row, 2, levelInfo);
             case "Part3":
-                return new Fuel(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), 3);
+                return createFuel(col, row, 3, levelInfo);
             case "L":
-                return new BigShip(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY());
+                return createBigShip(col, row, levelInfo);
             default:
                 return null;
         }
+    }
+
+    private Player createPlayer(int col, int row, LevelInfo levelInfo) {
+        return new Player(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), levelInfo.getDifficulty());
+    }
+
+    private Enemy createEnemy(int col, int row, int type, LevelInfo levelInfo) {
+        return new Enemy(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), type);
+    }
+
+    private Asteroid createAsteroid(int col, int row, int size, LevelInfo levelInfo) {
+        return new Asteroid(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), size);
+    }
+
+    private PowerUp createPowerUp(int col, int row, int type, LevelInfo levelInfo) {
+        return new PowerUp(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), type);
+    }
+
+    private Fuel createFuel(int col, int row, int type, LevelInfo levelInfo) {
+        return new Fuel(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), type);
+    }
+
+    private BigShip createBigShip(int col, int row, LevelInfo levelInfo) {
+        return new BigShip(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY());
     }
 
 }
