@@ -29,34 +29,21 @@ public class ObjectCreationHandler {
     }
 
     private GameObject createGameObject(String type, int col, int row, LevelInfo levelInfo) {
-        switch (type) {
-            case "Player":
-                return createPlayer(col, row, levelInfo);
-            case "E1":
-                return createEnemy(col, row, 0, levelInfo);
-            case "E2":
-                return createEnemy(col, row, 1, levelInfo);
-            case "D1":
-                return createAsteroid(col, row, 1, levelInfo);
-            case "D2":
-                return createAsteroid(col, row, 2, levelInfo);
-            case "P1":
-                return createPowerUp(col, row, 0, levelInfo);
-            case "P2":
-                return createPowerUp(col, row, 1, levelInfo);
-            case "F":
-                return createFuel(col, row, 0, levelInfo);
-            case "Part1":
-                return createFuel(col, row, 1, levelInfo);
-            case "Part2":
-                return createFuel(col, row, 2, levelInfo);
-            case "Part3":
-                return createFuel(col, row, 3, levelInfo);
-            case "L":
-                return createBigShip(col, row, levelInfo);
-            default:
-                return null;
-        }
+	    return switch (type) {
+		    case "Player" -> createPlayer(col, row, levelInfo);
+		    case "E1" -> createEnemy(col, row, 0, levelInfo);
+		    case "E2" -> createEnemy(col, row, 1, levelInfo);
+		    case "D1" -> createAsteroid(col, row, 1, levelInfo);
+		    case "D2" -> createAsteroid(col, row, 2, levelInfo);
+		    case "P1" -> createPowerUp(col, row, 0, levelInfo);
+		    case "P2" -> createPowerUp(col, row, 1, levelInfo);
+		    case "F" -> createFuel(col, row, 0, levelInfo);
+		    case "Part1" -> createFuel(col, row, 1, levelInfo);
+		    case "Part2" -> createFuel(col, row, 2, levelInfo);
+		    case "Part3" -> createFuel(col, row, 3, levelInfo);
+		    case "L" -> createBigShip(col, row, levelInfo);
+		    default -> null;
+	    };
     }
 
     private Player createPlayer(int col, int row, LevelInfo levelInfo) {
