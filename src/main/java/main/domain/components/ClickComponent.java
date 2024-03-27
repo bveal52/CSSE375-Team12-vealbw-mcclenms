@@ -4,6 +4,7 @@ import main.datasource.ImageLoader;
 import main.datasource.LevelReader;
 import main.datasource.Loader;
 import main.datasource.Reader;
+import main.domain.datastructures.LevelInfo;
 import main.domain.gameobjects.*;
 
 import java.awt.Graphics;
@@ -141,33 +142,17 @@ public class ClickComponent extends JComponent {
 		this.fuel = 0;
 		this.points = 0;
 
-//		System.out.println("LEVEL " + this.LevelNumber);
-//		try {
-//			this.currentObjects = currentLevel.readNewFile("levels/LEVEL"+this.LevelNumber+".csv", this.frame);
-//			try {
-//				background = this.currentLevel.getLevelImage(this.LevelNumber);
-//			} catch (IOException e) {
-//				System.out.println("no level " + this.LevelNumber + " background");
-//			}
-//		} catch (IOException e) {
-//			System.out.println("LEVEL NOT FOUND!");
-//		}
-
 		try {
-			//this.currentObjects = currentLevelReader.readNewFile("levels/LEVEL"+this.LevelNumber+".csv", this.frame);
 			String[][] levelData = currentLevelReader.readFile("levels/LEVEL" + this.LevelNumber + ".csv");
 
-			int pixelModifierX = frame.getWidth()/20;
-			int pixelModifierY = frame.getHeight()/20;
+			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth()/20, frame.getHeight()/20, difficulty);
 
 			try {
-				this.currentObjects = objectCreationHandler.createObjects(levelData, pixelModifierX, pixelModifierY, difficulty);
+				this.currentObjects = objectCreationHandler.createObjects(currentLevelInfo);
 			}
 			catch (Exception e) {
 				System.out.println("Error in creating objects");
 			}
-			System.out.println("LEVEL " + this.LevelNumber + " LOADED");
-			//set the
 			try {
 				background = this.imageLoader.getLevelImage(this.LevelNumber);
 			} catch (IOException e) {
@@ -176,10 +161,7 @@ public class ClickComponent extends JComponent {
 		} catch (IOException e) {
 			System.out.println("LEVEL NOT FOUND!");
 		}
-		
-		//print current objects
-//		for (GameObject object : this.currentObjects) {
-//			System.out.println(object);
+
 //		}
 		// designate a player and enemies
 		for (GameObject object:this.currentObjects) {
