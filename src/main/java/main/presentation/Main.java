@@ -37,17 +37,11 @@ public class Main {
 	public Main() {
 		JFrame frame = new JFrame("Star Wars: Squadrons | Java Edition");
 		frame.setSize(1600, 900);
-
-		// Create a layered pane
 		JLayeredPane layeredPane = frameManager.createLayeredPaneForFrame(frame);
 
-		// Load background image
 		frameManager.loadBackgroundImage(frame, layeredPane);
-
-		// Create title label
 		frameManager.createTitleLabel(layeredPane);
 
-		// Create difficulty buttons
 		JButton easyButton = frameManager.createDifficultyButton("Start Game: Easy", 600);
 
 		JButton mediumButton = frameManager.createDifficultyButton("Start Game: Medium", 650);

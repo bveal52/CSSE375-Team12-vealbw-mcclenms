@@ -28,6 +28,8 @@ public class ObjectCreationHandler {
         return objectsInLevel;
     }
 
+
+
     private GameObject createGameObject(String type, int col, int row, LevelInfo levelInfo) {
 	    return switch (type) {
 		    case "Player" -> createPlayer(col, row, levelInfo);

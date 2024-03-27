@@ -83,6 +83,14 @@ public class ClickComponent extends JComponent {
 		return this.frame;
 	}
 
+	public int getDifficulty() {
+		return this.difficulty;
+	}
+
+	public Player getPlayer() {
+		return this.player;
+	}
+
 	
 	// ACTIONS
 	
