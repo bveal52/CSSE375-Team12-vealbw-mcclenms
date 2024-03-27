@@ -51,3 +51,4 @@ public class BigShipTest {
             assertEquals(60, bigShip.getObjectSizeY());
         }
 }
+
