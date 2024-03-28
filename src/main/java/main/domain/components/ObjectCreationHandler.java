@@ -31,21 +31,46 @@ public class ObjectCreationHandler {
 
 
     private GameObject createGameObject(String type, int col, int row, LevelInfo levelInfo) {
-	    return switch (type) {
-		    case "Player" -> createPlayer(col, row, levelInfo);
-		    case "E1" -> createEnemy(col, row, 0, levelInfo);
-		    case "E2" -> createEnemy(col, row, 1, levelInfo);
-		    case "D1" -> createAsteroid(col, row, 1, levelInfo);
-		    case "D2" -> createAsteroid(col, row, 2, levelInfo);
-		    case "P1" -> createPowerUp(col, row, 0, levelInfo);
-		    case "P2" -> createPowerUp(col, row, 1, levelInfo);
-		    case "F" -> createFuel(col, row, 0, levelInfo);
-		    case "Part1" -> createFuel(col, row, 1, levelInfo);
-		    case "Part2" -> createFuel(col, row, 2, levelInfo);
-		    case "Part3" -> createFuel(col, row, 3, levelInfo);
-		    case "L" -> createBigShip(col, row, levelInfo);
-		    default -> null;
-	    };
+        GameObject gameObject = null;
+        switch (type) {
+            case "Player":
+                gameObject = createPlayer(col, row, levelInfo);
+                break;
+            case "E1":
+                gameObject = createEnemy(col, row, 0, levelInfo);
+                break;
+            case "E2":
+                gameObject = createEnemy(col, row, 1, levelInfo);
+                break;
+            case "D1":
+                gameObject = createAsteroid(col, row, 1, levelInfo);
+                break;
+            case "D2":
+                gameObject = createAsteroid(col, row, 2, levelInfo);
+                break;
+            case "P1":
+                gameObject = createPowerUp(col, row, 0, levelInfo);
+                break;
+            case "P2":
+                gameObject = createPowerUp(col, row, 1, levelInfo);
+                break;
+            case "F":
+                gameObject = createFuel(col, row, 0, levelInfo);
+                break;
+            case "Part1":
+                gameObject = createFuel(col, row, 1, levelInfo);
+                break;
+            case "Part2":
+                gameObject = createFuel(col, row, 2, levelInfo);
+                break;
+            case "Part3":
+                gameObject = createFuel(col, row, 3, levelInfo);
+                break;
+            case "L":
+                gameObject = createBigShip(col, row, levelInfo);
+                break;
+        }
+        return gameObject;
     }
 
     private Player createPlayer(int col, int row, LevelInfo levelInfo) {
