@@ -86,6 +86,10 @@ public class Enemy extends GameObject {
 	public Projectile fireLaser() {
 		Projectile laser = new Projectile(this.getPositionX(), this.getPositionY(), this.rotationAngle, false);
 		return laser;
-	} 
+	}
+
+	public int getEnemyClass() {
+		return this.enemyClass;
+	}
 	
 }
