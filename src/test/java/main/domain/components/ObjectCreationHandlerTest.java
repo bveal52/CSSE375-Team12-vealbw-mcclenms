@@ -1,6 +1,7 @@
 package main.domain.components;
 
 import main.domain.datastructures.LevelInfo;
+
 import main.domain.gameobjects.*;
 
 import main.domain.components.ObjectCreationHandler;
