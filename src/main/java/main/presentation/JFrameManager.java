@@ -1,6 +1,9 @@
 package main.presentation;
 
 import javax.swing.*;
+
+import main.domain.components.ClickComponent;
+
 import java.awt.*;
 
 public class JFrameManager {
@@ -39,4 +42,16 @@ public class JFrameManager {
 		Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 		return new ImageIcon(scaledImage);
 	}
+
+    public void setupFrameResizing(JFrame frame, ClickComponent component) {
+        frame.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e) {
+                component.onWindowResized();
+            }
+        });
+    }
+
+
+	
 }

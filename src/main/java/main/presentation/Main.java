@@ -37,6 +37,7 @@ public class Main {
 	public Main() {
 		JFrame frame = new JFrame("Star Wars: Squadrons | Java Edition");
 		frame.setSize(1600, 900);
+		frame.setMinimumSize(new Dimension(1400, 800));
 
 		// Create a layered pane
 		JLayeredPane layeredPane = frameManager.createLayeredPaneForFrame(frame);
@@ -82,6 +83,10 @@ public class Main {
 
 		// add game panel
 		ClickComponent component = new ClickComponent(frame, gameLabel, difficulty);
+
+		frameManager.setupFrameResizing(frame, component);
+
+		
 
 		//add key listener
 		KeyListener keys = new ClickListener(component);
