@@ -101,5 +101,8 @@ public class Player extends GameObject {
 		this.maxSpeed += 5;
 	}
 
+	public int getMaxSpeed() {
+		return this.maxSpeed;
+	}
 
 }
