@@ -448,12 +448,11 @@ public class ClickComponent extends JComponent {
 	}
 
 
+public void onWindowResized() {
+    //int pixelModifierX = frame.getWidth() / 20;
+    //int pixelModifierY = frame.getHeight() / 20;
 
-
-
-
-
-	
-	
+    repaint();
+}
 
 }

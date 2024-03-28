@@ -5,6 +5,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.Image;
+
+
+//import javafx.scene.image.Image;
 
 public abstract class GameObject {
 	
@@ -205,6 +209,14 @@ public abstract class GameObject {
 	public void setObjectSize(int objectSizeX, int objectSizeY) {
 		this.objectSizeX = objectSizeX;
 		this.objectSizeY = objectSizeY;
+
+		        // Scale the image to match the new object size
+        Image scaledImage = this.image.getScaledInstance(objectSizeX, objectSizeY, Image.SCALE_SMOOTH);
+        this.image = new BufferedImage(objectSizeX, objectSizeY, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = this.image.createGraphics();
+        g2d.drawImage(scaledImage, 0, 0, null);
+        g2d.dispose();
+
 	}
 
 	public int getPositionX() {
@@ -235,6 +247,9 @@ public abstract class GameObject {
 	public void markForRemoval() {
 		this.isMarked = true;
 	}
+
+	
+	
 	
 
 	
