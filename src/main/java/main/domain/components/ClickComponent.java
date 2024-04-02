@@ -29,7 +29,7 @@ public class ClickComponent extends JComponent {
 	private JFrame frame;
 	private JLabel label;
 	private int LevelNumber;
-    private ObjectCreationHandler objectCreationHandler = new ObjectCreationHandler();
+    private ObjectCreationHandler objectCreationHandler;
 	public ArrayList<GameObject> currentObjects;
 	private ArrayList<Enemy> currentEnemies;
 	private ArrayList<Projectile> currentProjectiles;
@@ -69,6 +69,7 @@ public class ClickComponent extends JComponent {
 		this.currentPowerUps = new ArrayList<PowerUp>();
 		this.currentAsteroids = new ArrayList<Asteroid>();
 		this.background = null;
+		objectCreationHandler = new ObjectCreationHandler(new DefaultObjectCreationHandler());
 		try {
 			this.SwitchLevel(true);
 		} catch (Exception e) {
