@@ -44,14 +44,6 @@ public void playTurbolaser(String musicLocation) {
 				Clip clip = AudioSystem.getClip();
 				clip.open(audioInput);
 				clip.start();
-				
-//				System.out.println();
-				
-				
-				
-//				JOptionPane.showInternalMessageDialog(null, "Press OKAY to stop playing");
-				
-//				clip.stop();
 			}
 			
 			else {

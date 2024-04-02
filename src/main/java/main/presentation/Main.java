@@ -29,6 +29,11 @@ public class Main {
 	 * @param args
 	 */
 	public static final int DELAY=50;
+
+	public static final int BACKGROUND_MUSIC = 1000;
+
+	public static final int FALCON_MUSIC = 1001;
+
 	private BufferedImage imageTitle;
 	private JFrameManager frameManager = new JFrameManager();
 
