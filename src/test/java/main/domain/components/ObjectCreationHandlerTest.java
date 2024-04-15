@@ -111,7 +111,7 @@ public class ObjectCreationHandlerTest {
 	private String[][] getMockLevel1Data() {
 
 		return new String[][]{
-				{"Player", "Enemy"}
+				{"Player","Enemy"}
 		};
 	}
 }
