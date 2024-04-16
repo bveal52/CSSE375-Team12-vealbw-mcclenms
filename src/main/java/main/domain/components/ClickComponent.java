@@ -1,9 +1,6 @@
 package main.domain.components;
 
-import main.datasource.ImageLoader;
-import main.datasource.LevelReader;
-import main.datasource.Loader;
-import main.datasource.Reader;
+import main.datasource.*;
 import main.domain.datastructures.LevelInfo;
 import main.domain.gameobjects.*;
 
@@ -30,6 +27,8 @@ public class ClickComponent extends JComponent {
 	private JLabel label;
 	private int LevelNumber;
 	private ObjectCreationHandler objectCreationHandler = new ObjectCreationHandler();
+
+	private Scanner levelScanner = new DirectoryLevelScanner();
 	public ArrayList<GameObject> currentObjects;
 	private ArrayList<Enemy> currentEnemies;
 	private ArrayList<Projectile> currentProjectiles;
@@ -47,6 +46,8 @@ public class ClickComponent extends JComponent {
 	private int points;
 
 	public boolean changeLevel;
+
+	private final int NUM_LEVELS = levelScanner.scanner();
 
 
 	/**
@@ -129,7 +130,7 @@ public class ClickComponent extends JComponent {
 	 */
 	public void SwitchLevel(boolean nextLevel) throws Exception {
 		// check if next level is a valid request
-		if (nextLevel == true && this.LevelNumber < 3) {
+		if (nextLevel == true && this.LevelNumber < NUM_LEVELS) {
 			this.LevelNumber += 1;
 
 		} else if (nextLevel == false && this.LevelNumber > 1) {
@@ -219,7 +220,7 @@ public class ClickComponent extends JComponent {
 			this.gameOver = true;
 
 		}
-		if (this.gameOver && this.LevelNumber < 3) {
+		if (this.gameOver && this.LevelNumber < NUM_LEVELS) {
 			if (this.fuel == 3) {
 				changeLevel = true;
 			} else {
@@ -231,7 +232,7 @@ public class ClickComponent extends JComponent {
 			}
 			this.repaint();
 			this.currentObjects.clear();
-		} else if (this.fuel == 3 && this.LevelNumber == 3) {
+		} else if (this.fuel == 3 && this.LevelNumber == NUM_LEVELS) {
 			try {
 				background = ImageIO.read(new File("images/winImage.png"));
 			} catch (IOException e) {
