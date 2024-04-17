@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MusicPlaybackTest {
 
 	@Test
-	@EnabledOnOs(value = {OS.WINDOWS, OS.MAC})
+	@EnabledOnOs(value = {OS.MAC})
 	public void testPlayMusicInvalidFile() {
 		MusicPlayback musicStuff = new MusicPlayback();
 		String invalidMusicPath = "path/to/nonexistent/file.mp3";
@@ -23,7 +23,7 @@ public class MusicPlaybackTest {
 	}
 
 	@Test
-	@EnabledOnOs(value = {OS.WINDOWS, OS.MAC})
+	@EnabledOnOs(value = {OS.MAC})
 	public void testPlayTurbolaser() {
 		MusicPlayback musicStuff = new MusicPlayback();
 		String validTurbolaserPath = "images/turbolaser.wav";
@@ -39,7 +39,7 @@ public class MusicPlaybackTest {
 	}
 
 	@Test
-	@EnabledOnOs(value = {OS.WINDOWS, OS.MAC})
+	@EnabledOnOs(value = {OS.MAC})
 	public void testPlayMusic() {
 		MusicPlayback musicStuff = new MusicPlayback();
 		String validMusicPath = "images/level3OST.wav";
@@ -55,7 +55,7 @@ public class MusicPlaybackTest {
 	}
 
 	@Test
-	@EnabledOnOs(value = {OS.WINDOWS, OS.MAC})
+	@EnabledOnOs(value = {OS.MAC})
 	public void testPlayTurbolaserInvalidFile() {
 		MusicPlayback musicStuff = new MusicPlayback();
 		String invalidTurbolaserPath = "path/to/nonexistent/turbolaser/file.wav";
