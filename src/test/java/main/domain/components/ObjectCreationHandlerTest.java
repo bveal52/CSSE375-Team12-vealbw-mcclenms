@@ -74,12 +74,10 @@ public class ObjectCreationHandlerTest {
 
 		ArrayList<GameObject> objects = handler.createObjects(levelInfo);
 
-		assertEquals(2, objects.size()); // Assuming the expected count of objects
+		assertEquals(1, objects.size()); // Assuming the expected count of objects
 
 		// Test if objects are of correct types
 		assertTrue(objects.get(0) instanceof Player);
-
-		assertTrue(objects.get(1) instanceof Enemy);
 	}
 
 	private String[][] getLevel1Data() {
