@@ -1,0 +1,269 @@
+@startuml
+
+package main {
+
+package datasource {
+
+class ImageLoader {
+ + getLevelImage(int levelNumber) : BufferedImage
+
+}
+
+class LevelReader {
+ + readFile(String levelFileName) : String[][]
+
+}
+
+interface Loader {
+ + getLevelImage(int levelNumber) : BufferedImage
+}
+
+
+class musicStuff {
++ playMusic(String musicLocation) : void
++ playTurbolaser(String musicLocation) : void
+}
+
+interface Reader {
+ + readFile(String levelFileName) : String[][]
+}
+
+}
+
+package domain {
+
+package components {
+
+class ClickComponent {
+
+	- difficulty :int
+	- frame : JFrame
+	- label : JLabel
+	- LevelNumber : int
+    - objectCreationHandler : ObjectCreationHandler
+	+ currentObjects : ArrayList<GameObject>
+	- currentEnemies : ArrayList<Enemy>
+	- currentProjectiles : ArrayList<Projectile>
+	- currentFuel : ArrayList<Fuel>
+	- currentPowerUps : ArrayList<PowerUp>
+	- currentAsteroids : ArrayList<Asteroid>
+	- player : Player
+	- bigship : BigShip
+	- background : BufferedImage
+	-  currentLevelReader : Reader
+	- Loader imageLoader
+	- boolean gameOver
+	- int fuel
+	- int points;
+
++ ClickComponent(JFrame frame, JLabel GUIlabel, int difficulty)
++ down() : void
++ up() : void
++ left() : void
++ right() : void
++ playerFire() : void
++ SwitchLevel(boolean nextLevel)
++ checkIfEndgame() : void
++ gravity() : void
++ momentum() : void
++ drawEnemies() : void
++ dragCans() : void
++ checkCollisions() : void
++ devourTheMarked() : void
++ drawScreen() : void
++ paintComponent(Graphics g) : void
++ getCurrentProjectiles() : ArrayList<Projectile>
++ onWindowResized() : void
+
+//getters and setters excluded()
+}
+
+class ClickListener {
+
+- component : ClickComponent
+- pressed : Set<Integer>
+- turbolaser : musicStuff
+
++ ClickListener(ClickComponent component)
++ keyPressed(KeyEvent input) : void
++ keyReleased(KeyEvent e) : void
++ keyTyped(KeyEvent e) : void
+}
+
+class GameAdvanceListener {
+
+- component : ClickComponent
++ GameAdvanceListener(ClickComponent component)
++ actionPerformed(ActionEvent e) : void
++ advanceOneTick() : void
+}
+
+class ObjectCreationHandler {
+
++ createObjects(LevelInfo levelInfo) : Arraylist<GameObject>
++ createGameObject(String type, int col, int row, LevelInfo levelInfo) : GameObject
+- createPlayer(int col, int row, LevelInfo levelInfo) : Player
+- createEnemy(int col, int row, LevelInfo levelInfo) : Enemy
+- createFuel(int col, int row, LevelInfo levelInfo) : Fuel
+- createPowerUp(int col, int row, LevelInfo levelInfo) : PowerUp
+- createAsteroid(int col, int row, LevelInfo levelInfo) : Asteroid
+- createBigShip(int col, int row, LevelInfo levelInfo) : BigShip
+}
+
+
+}
+
+package datastructures {
+
+class LevelInfo {
+    - levelData : String[][]
+    - pixelModifierX : int
+    - pixelModifierY : int
+    - difficulty : int
+
+    + LevelInfo(String[][], int pixelModifierX, int pixelModifierY, int difficulty)
+    + getLevelData() : String[][]
+    + getPixelModifierX() : int
+    + getPixelModifierY() : int
+    + getDifficulty() : int
+}
+}
+
+package gameObjects {
+
+class Asteroid {
+
+- imgFilename : String
+
++ Asteroid(int positionX, int positionY, int size)
+
+}
+
+class BigShip {
+    - hasTurned : boolean
+    - imgFilename : String
+    - firstPiece : int
+
+    + BigShip(int positionX, int positionY)
+    + getHasTurned() : boolean
+    + setHasTurned(boolean hasTurned) : void
+    + setImageCompletion(int progress) : void
+    + getImgFilename() : String
+}
+
+class Enemy {
+- enemyClass : int
+- E1FileName : String
+- E2FileName : String
+# tieLaser : musicStuff
+
++ Enemy(int positionX, int positionY, int enemyClass)
++ enemyMove(ClickComponent component)
++ fireLaser() : Projectile
++ getEnemyClass() : int
+}
+
+class Fuel {
+
+- imgFilename : String
+- partNumber : int
+- isAttached : boolean
+
++ Fuel(int positionX, int positionY, int partNumber)
++ attachTo(Player player) : void
++ moveWith(Player player) : void
++ getPartNumber() : int
+}
+
+class GameObject {
+
+- positionX : int
+- positionY : int
+# velocityX : double
+# velocityY : double
+# rotationAngle : int
+# maxSpeed : int
+- health : int
++ type : int
+- isSlowable : boolean
+- isMarked : boolean
+- image : BufferedImage
+# objectSizeX : int
+# objectSizeY : int
+# imageFileName : String
+
++ GameObject(int positionX, int positionY)
++ drawObject(Graphics2D g2d) : void
++ getTotalVelocity() : double
++ moveForwards() : void
++ moveBackwards() : void
++ turn(int angle) : void
++ checkCollision(int incomingX, int incomingY, int targetSizeX, int targetSizeY) : boolean
++ explode() : void
++ continuePath() : void
++ bounce() : void
+//setters and getters excluded()
+
+}
+
+class Player {
+    - difficulty : int
+    - imgFilename : String
+
+    + Player(int positionX, int positionY, int difficulty)
+    + moveForwards() : void
+    + explode() : void
+    + continuePath() : void
+    + getRotation() : int
+    + moveDown() : void
+    + increaseMaxSpeed() : void
+    + getMaxSpeed() : int
+}
+
+class PowerUp {
+- P1Filename : String
+- P2Filename : String
+- powerType : int
+
++ PowerUp(int positionX, int positionY, int powerType)
++ getPowerType() : int
+}
+
+class Projectile {
+- redFilename : String
+- greenFilename : String
+
++ Projectile(int positionX, int positionY, int rotationAngle, boolean isRed)
+}
+}
+
+}
+
+package presentation {
+
+class JFrameManager {
+
++ createLayeredPaneForFrame(JFrame frame) : JLayeredPane
++ createDifficultyButton(String text, int y) : JButton
++ createTitleLabel(JLayeredPane layeredPane) : void
++ loadBackgroundImage(JFrame frame, JLayeredPane layeredPane) : void
++ scaleImageIcon(ImageIcon imageIcon, int width, int height) : ImageIcon
++ setupFrameResizing(JFrame frame, ClickComponent component) : void
+
+}
+
+class Main {
+
+ + {static} DELAY : int
+ - frameManager : JFrameManager
+
+ + Main()
+ + main(String[] args)
+ + startGame(JFrame frame, JLayeredPane titlePanel, int difficulty) : void
+}
+
+
+}
+
+
+@enduml
