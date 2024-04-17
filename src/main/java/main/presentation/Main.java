@@ -1,9 +1,9 @@
 package main.presentation;
 
+import main.datasource.MusicPlayback;
 import main.domain.components.ClickComponent;
 import main.domain.components.ClickListener;
 import main.domain.components.GameAdvanceListener;
-import main.datasource.musicStuff;
 
 import javax.swing.*;
 
@@ -95,9 +95,10 @@ public class Main {
 		GameAdvanceListener advanceListener = new GameAdvanceListener(component);
 
 		//add music
-		musicStuff levelOST = new musicStuff();
-		levelOST.playMusic("images/level3OST.wav");
-		levelOST.playMusic("images/falconSFX.wav");
+		//musicStuff levelOST = new musicStuff();
+		MusicPlayback levelOST = new MusicPlayback();
+		levelOST.play("images/level3OST.wav", true);
+		levelOST.play("images/falconSFX.wav", true);
 
 		//add components to the frame
 		frame.addKeyListener(keys);
