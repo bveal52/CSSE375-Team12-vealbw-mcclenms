@@ -47,7 +47,7 @@ public class ClickComponent extends JComponent {
 
 	public boolean changeLevel;
 
-	private final int NUM_LEVELS = levelScanner.scanner(levelScanner.getDirectory("./levels"));
+	public final int NUM_LEVELS = levelScanner.scanner(levelScanner.getDirectory("./levels"));
 
 
 	/**
