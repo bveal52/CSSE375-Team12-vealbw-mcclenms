@@ -1,6 +1,6 @@
 package main.domain.components;
 
-import main.datasource.musicStuff;
+import main.datasource.MusicPlayback;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -11,8 +11,9 @@ public class ClickListener implements KeyListener {
 
 	private ClickComponent component;
 	private final Set<Integer> pressed = new TreeSet<Integer>();
-	musicStuff turbolaser = new musicStuff();
+	//musicStuff turbolaser = new musicStuff();
 
+	MusicPlayback turbolaser = new MusicPlayback();
 
 	public ClickListener(ClickComponent component) {
 		this.component = component;
@@ -64,24 +65,10 @@ public class ClickListener implements KeyListener {
 	        	this.component.up();
 	        } else if (c == KeyEvent.VK_DOWN) {
 	        	this.component.down();
-	        } else if (c == KeyEvent.VK_U) {
-				//System.out.println("Pressed U, Switched Level");
-				try {
-					this.component.SwitchLevel(true);
-				} catch (Exception e) {
-					System.out.println("NO NEXT LEVEL!");
-				}
-	        } else if (c == KeyEvent.VK_D) {
-				//System.out.println("Pressed D, Switched Level!");
-				try {
-					this.component.SwitchLevel(false);
-				} catch (Exception e) {
-					System.out.println("NO PREVIOUS LEVEL!");
-				}
 			} else if (c == KeyEvent.VK_SPACE) {
 				//System.out.println("Pressed Space, Fire!");
 				this.component.playerFire();
-				turbolaser.playTurbolaser("images/turbolaser.wav");
+				turbolaser.play("images/turbolaser.wav", false);
 			}
 	    }
 	    
