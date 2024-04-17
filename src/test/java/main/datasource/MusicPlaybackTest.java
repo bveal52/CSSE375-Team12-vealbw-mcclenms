@@ -1,28 +1,16 @@
 package main.datasource;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.sound.sampled.Clip;
-import javax.swing.plaf.multi.MultiInternalFrameUI;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MusicPlaybackTest {
 
-	private MusicPlayback musicStuff;
-
-	@BeforeEach
-	public void setUp() {
-		musicStuff = new MusicPlayback();
-	}
-
-
-
 	@Test
 	public void testPlayMusicInvalidFile() {
+		MusicPlayback musicStuff = new MusicPlayback();
 		String invalidMusicPath = "path/to/nonexistent/file.mp3";
 		musicStuff.play(invalidMusicPath, true);
 
@@ -33,6 +21,7 @@ public class MusicPlaybackTest {
 
 	@Test
 	public void testPlayTurbolaser() {
+		MusicPlayback musicStuff = new MusicPlayback();
 		String validTurbolaserPath = "images/turbolaser.wav";
 		musicStuff.play(validTurbolaserPath, true);
 
@@ -47,6 +36,7 @@ public class MusicPlaybackTest {
 
 	@Test
 	public void testPlayMusic() {
+		MusicPlayback musicStuff = new MusicPlayback();
 		String validMusicPath = "images/level3OST.wav";
 		musicStuff.play(validMusicPath, true);
 
@@ -61,6 +51,7 @@ public class MusicPlaybackTest {
 
 	@Test
 	public void testPlayTurbolaserInvalidFile() {
+		MusicPlayback musicStuff = new MusicPlayback();
 		String invalidTurbolaserPath = "path/to/nonexistent/turbolaser/file.wav";
 		musicStuff.play(invalidTurbolaserPath, true);
 		assertFalse(musicStuff.isMusicPlaying());
