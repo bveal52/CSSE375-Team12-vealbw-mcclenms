@@ -18,15 +18,34 @@ interface Loader {
  + getLevelImage(int levelNumber) : BufferedImage
 }
 
-
-class musicStuff {
-+ playMusic(String musicLocation) : void
-+ playTurbolaser(String musicLocation) : void
-}
-
 interface Reader {
  + readFile(String levelFileName) : String[][]
 }
+
+class DirectoryLevelScanner{
+    + getDirectory() : File
+    + scanner() : int
+}
+
+interface Scanner {
+ + getDirectory() : File
+ + scanner() : int
+}
+
+class MusicPlayback {
+    + play(String musicLocation, boolean loop) : void
+}
+
+interface Playback {
+    + play(String musicLocation, boolean loop) : void
+}
+
+MusicPlayback ..|> Playback
+DirectoryLevelScanner ..|> Scanner
+ImageLoader ..|> Loader
+LevelReader ..|> Reader
+
+
 
 }
 
@@ -98,9 +117,19 @@ class GameAdvanceListener {
 + advanceOneTick() : void
 }
 
-class ObjectCreationHandler {
+interface GameObjectFactory {
+    + createGameObject(String type, int col, int row, LevelInfo levelInfo) : GameObject
+}
 
-+ createObjects(LevelInfo levelInfo) : Arraylist<GameObject>
+MockObjectCreationHandler ..|> GameObjectFactory
+DefaultObjectCreationHandler ..|> GameObjectFactory
+
+class MockObjectCreationHandler {
+ + createGameObject(String type, int col, int row, LevelInfo levelInfo)
+}
+
+class DefaultObjectCreationHandler {
+
 + createGameObject(String type, int col, int row, LevelInfo levelInfo) : GameObject
 - createPlayer(int col, int row, LevelInfo levelInfo) : Player
 - createEnemy(int col, int row, LevelInfo levelInfo) : Enemy
@@ -109,6 +138,11 @@ class ObjectCreationHandler {
 - createAsteroid(int col, int row, LevelInfo levelInfo) : Asteroid
 - createBigShip(int col, int row, LevelInfo levelInfo) : BigShip
 }
+
+class ObjectCreationHandler {
+    + createObjects(LevelInfo levelInfo) : Arraylist<GameObject>
+}
+
 
 
 }
@@ -175,7 +209,7 @@ class Fuel {
 + getPartNumber() : int
 }
 
-class GameObject {
+abstract class GameObject {
 
 - positionX : int
 - positionY : int
@@ -235,6 +269,15 @@ class Projectile {
 
 + Projectile(int positionX, int positionY, int rotationAngle, boolean isRed)
 }
+
+Fuel ..|> GameObject
+Asteroid ..|> GameObject
+BigShip ..|> GameObject
+Enemy ..|> GameObject
+Player ..|> GameObject
+PowerUp ..|> GameObject
+Projectile ..|> GameObject
+
 }
 
 }
