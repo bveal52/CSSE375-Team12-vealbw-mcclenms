@@ -36,13 +36,10 @@ public class MusicPlaybackTest {
 		String validTurbolaserPath = "images/turbolaser.wav";
 		musicStuff.play(validTurbolaserPath, true);
 
-		//wait for music to start playing since there is a delay in this track
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		//wait without using Thread.sleep
+		long startTime = System.currentTimeMillis();
+		while (System.currentTimeMillis() - startTime < 1000) {
 		}
-
 		assertTrue(musicStuff.isMusicPlaying());
 		musicStuff.stopMusic();
 
@@ -53,11 +50,9 @@ public class MusicPlaybackTest {
 		String validMusicPath = "images/level3OST.wav";
 		musicStuff.play(validMusicPath, true);
 
-		//wait for music to start playing since there is a delay in this track
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		//wait without using Thread.sleep
+		long startTime = System.currentTimeMillis();
+		while (System.currentTimeMillis() - startTime < 1000) {
 		}
 
 		assertTrue(musicStuff.isMusicPlaying());
