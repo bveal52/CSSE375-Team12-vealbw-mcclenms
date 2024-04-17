@@ -36,6 +36,13 @@ public class MusicPlaybackTest {
 		String validTurbolaserPath = "./images/turbolaser.wav";
 		musicStuff.play(validTurbolaserPath, true);
 
+		//wait for music to start playing since there is a delay in this track
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 		assertTrue(musicStuff.isMusicPlaying());
 		musicStuff.stopMusic();
 
