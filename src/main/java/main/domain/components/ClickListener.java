@@ -64,20 +64,6 @@ public class ClickListener implements KeyListener {
 	        	this.component.up();
 	        } else if (c == KeyEvent.VK_DOWN) {
 	        	this.component.down();
-	        } else if (c == KeyEvent.VK_U) {
-				//System.out.println("Pressed U, Switched Level");
-				try {
-					this.component.SwitchLevel(true);
-				} catch (Exception e) {
-					System.out.println("NO NEXT LEVEL!");
-				}
-	        } else if (c == KeyEvent.VK_D) {
-				//System.out.println("Pressed D, Switched Level!");
-				try {
-					this.component.SwitchLevel(false);
-				} catch (Exception e) {
-					System.out.println("NO PREVIOUS LEVEL!");
-				}
 			} else if (c == KeyEvent.VK_SPACE) {
 				//System.out.println("Pressed Space, Fire!");
 				this.component.playerFire();
