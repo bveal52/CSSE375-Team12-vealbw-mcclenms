@@ -17,7 +17,7 @@ public class ObjectCreationHandlerTest {
 
 	@Test
 	public void testCreateObjects_Order_Level1() {
-		ObjectCreationHandler handler = new ObjectCreationHandler();
+		ObjectCreationHandler handler = new ObjectCreationHandler(new DefaultObjectCreationHandler());
 		String[][] levelData = getLevel1Data();
 
 		//expected arrayList of gameObjects - powerup, enemy, asteroid, part1, enemy, player, part3, part2, asteroid, enemy, powerup
@@ -59,6 +59,27 @@ public class ObjectCreationHandlerTest {
 
 	}
 
+	@Test
+	public void testObjectCreation_Order_MockSeam() {
+
+		ObjectCreationHandler handler = new ObjectCreationHandler(new MockObjectCreationHandler());
+
+		String[][] levelData = getMockLevel1Data();
+
+		int pixelModifierX = 0;
+		int pixelModifierY = 0;
+		int difficulty = 2;
+
+		LevelInfo levelInfo = new LevelInfo(levelData, pixelModifierX, pixelModifierY, difficulty);
+
+		ArrayList<GameObject> objects = handler.createObjects(levelInfo);
+
+		assertEquals(1, objects.size()); // Assuming the expected count of objects
+
+		// Test if objects are of correct types
+		assertTrue(objects.get(0) instanceof Player);
+	}
+
 	private String[][] getLevel1Data() {
 
 		return new String[][]{
@@ -82,6 +103,13 @@ public class ObjectCreationHandlerTest {
 				{"18", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "P2", "x", "x", "x", "x", "x"},
 				{"19", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"},
 				{"20", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"}
+		};
+	}
+
+	private String[][] getMockLevel1Data() {
+
+		return new String[][]{
+				{"Player","Enemy"}
 		};
 	}
 }
