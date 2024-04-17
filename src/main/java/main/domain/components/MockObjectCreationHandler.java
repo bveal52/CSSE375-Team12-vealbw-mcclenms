@@ -11,16 +11,12 @@ public class MockObjectCreationHandler implements GameObjectFactory {
 
 	@Override
 	public GameObject createGameObject(String type, int col, int row, LevelInfo levelInfo) {
-		// For testing purposes, we'll create specific mock objects based on input type
 		GameObject gameObject = null;
+		//for the sake of testing, only test the creation of a single type of object. Can add more types if needed
 		switch (type) {
 			case "Player":
 				gameObject = new Player(col, row, levelInfo.getDifficulty());
 				break;
-			case "Enemy":
-				gameObject = new Enemy(col, row, 0);
-				break;
-			// Add more cases for other types as needed
 			default:
 				break;
 		}
