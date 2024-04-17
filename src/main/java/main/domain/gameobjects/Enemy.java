@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import main.datasource.musicStuff;
+import main.datasource.MusicPlayback;
 import main.domain.components.ClickComponent;
 
 
@@ -15,7 +15,9 @@ public class Enemy extends GameObject {
 	private int enemyClass;
 	private String E1Filename = "images/enemy1.png";
 	private String E2Filename = "images/enemy2.png";
-	musicStuff tieLaser = new musicStuff();
+	//musicStuff tieLaser = new musicStuff();
+
+	MusicPlayback tieLaser = new MusicPlayback();
 	
 	/**
 	 * Constructor 
@@ -68,7 +70,7 @@ public class Enemy extends GameObject {
 				Projectile laser = this.fireLaser();
 				component.currentObjects.add(laser);
 				component.getCurrentProjectiles().add(laser);
-				tieLaser.playTurbolaser("images/tieLaser.wav");
+				tieLaser.play("images/tieLaser.wav", false);
 				
 				
 				

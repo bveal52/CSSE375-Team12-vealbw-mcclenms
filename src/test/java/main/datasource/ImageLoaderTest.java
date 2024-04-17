@@ -17,7 +17,7 @@ public class ImageLoaderTest {
 		ImageLoader imageLoader = new ImageLoader();
 		try {
 			BufferedImage level1Image = ImageIO.read(new File("images/level1.jpg"));
-			assertArrayEquals(getImagePixels(level1Image), getImagePixels(imageLoader.getLevelImage(1)));
+			assertArrayEquals(getImagePixels(level1Image), getImagePixels(imageLoader.loadImage(1)));
 		} catch (IOException e) {
 			fail("IOException occurred: " + e.getMessage());
 		}
@@ -28,7 +28,7 @@ public class ImageLoaderTest {
 		ImageLoader imageLoader = new ImageLoader();
 		try {
 			BufferedImage level2Image = ImageIO.read(new File("images/level2.jpg"));
-			assertArrayEquals(getImagePixels(level2Image), getImagePixels(imageLoader.getLevelImage(2)));
+			assertArrayEquals(getImagePixels(level2Image), getImagePixels(imageLoader.loadImage(2)));
 		} catch (IOException e) {
 			fail("IOException occurred: " + e.getMessage());
 		}
@@ -39,7 +39,7 @@ public class ImageLoaderTest {
 		ImageLoader imageLoader = new ImageLoader();
 		try {
 			BufferedImage level3Image = ImageIO.read(new File("images/level3.jpg"));
-			assertArrayEquals(getImagePixels(level3Image), getImagePixels(imageLoader.getLevelImage(3)));
+			assertArrayEquals(getImagePixels(level3Image), getImagePixels(imageLoader.loadImage(3)));
 		} catch (IOException e) {
 			fail("IOException occurred: " + e.getMessage());
 		}
@@ -50,7 +50,7 @@ public class ImageLoaderTest {
 		ImageLoader imageLoader = new ImageLoader();
 		try {
 			BufferedImage titleImage = ImageIO.read(new File("images/titleImage.jpg"));
-			assertArrayEquals(getImagePixels(titleImage), getImagePixels(imageLoader.getLevelImage(4)));
+			assertArrayEquals(getImagePixels(titleImage), getImagePixels(imageLoader.loadImage(4)));
 		} catch (IOException e) {
 			fail("IOException occurred: " + e.getMessage());
 		}
@@ -66,10 +66,10 @@ public class ImageLoaderTest {
 			BufferedImage titleScreenImage = ImageIO.read(new File("images/titleImage.jpg"));
 
 
-			assertArrayEquals(getImagePixels(level1Image), getImagePixels(imageLoader.getLevelImage(1)));
-			assertArrayEquals(getImagePixels(level2Image), getImagePixels(imageLoader.getLevelImage(2)));
-			assertArrayEquals(getImagePixels(level3Image), getImagePixels(imageLoader.getLevelImage(3)));
-			assertArrayEquals(getImagePixels(titleScreenImage), getImagePixels(imageLoader.getLevelImage(4)));
+			assertArrayEquals(getImagePixels(level1Image), getImagePixels(imageLoader.loadImage(1)));
+			assertArrayEquals(getImagePixels(level2Image), getImagePixels(imageLoader.loadImage(2)));
+			assertArrayEquals(getImagePixels(level3Image), getImagePixels(imageLoader.loadImage(3)));
+			assertArrayEquals(getImagePixels(titleScreenImage), getImagePixels(imageLoader.loadImage(4)));
 		} catch (IOException e) {
 			fail("IOException occurred: " + e.getMessage());
 		}

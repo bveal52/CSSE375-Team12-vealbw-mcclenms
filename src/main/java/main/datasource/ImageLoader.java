@@ -1,9 +1,12 @@
 package main.datasource;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.Clip;
+import java.awt.geom.NoninvertibleTransformException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.NotActiveException;
 
 public class ImageLoader implements Loader {
 
@@ -12,7 +15,7 @@ public class ImageLoader implements Loader {
     private final String level3Filename = "images/level3.jpg";
     private final String titleScreen = "images/titleImage.jpg";
 
-    public BufferedImage getLevelImage(int levelNumber) throws IOException {
+    public BufferedImage loadImage(int levelNumber) throws IOException {
         if (levelNumber == 1) {
             return ImageIO.read(new File(level1Filename));
         } else if (levelNumber == 2 ){
@@ -23,5 +26,10 @@ public class ImageLoader implements Loader {
             return ImageIO.read(new File(titleScreen));
         }
 
+    }
+
+    @Override
+    public Clip loadClip(int identifier) throws Exception {
+        throw new NotActiveException();
     }
 }

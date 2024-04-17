@@ -164,7 +164,7 @@ public class ClickComponent extends JComponent {
 				System.out.println("Error in creating objects");
 			}
 			try {
-				background = this.imageLoader.getLevelImage(this.LevelNumber);
+				background = this.imageLoader.loadImage(this.LevelNumber);
 			} catch (IOException e) {
 				System.out.println("no level " + this.LevelNumber + " background");
 			}
