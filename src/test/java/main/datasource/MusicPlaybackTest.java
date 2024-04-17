@@ -33,7 +33,7 @@ public class MusicPlaybackTest {
 
 	@Test
 	public void testPlayTurbolaser() {
-		String validTurbolaserPath = "./images/turbolaser.wav";
+		String validTurbolaserPath = "images/turbolaser.wav";
 		musicStuff.play(validTurbolaserPath, true);
 
 		//wait for music to start playing since there is a delay in this track
@@ -66,7 +66,7 @@ public class MusicPlaybackTest {
 
 	@Test
 	public void testPlayTurbolaserInvalidFile() {
-		String invalidTurbolaserPath = "./path/to/nonexistent/turbolaser/file.wav";
+		String invalidTurbolaserPath = "path/to/nonexistent/turbolaser/file.wav";
 		musicStuff.play(invalidTurbolaserPath, true);
 		assertFalse(musicStuff.isMusicPlaying());
 		musicStuff.stopMusic();

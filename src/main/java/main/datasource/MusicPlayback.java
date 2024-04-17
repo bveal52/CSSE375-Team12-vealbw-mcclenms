@@ -49,8 +49,6 @@ public class MusicPlayback implements Playback {
 			return false;
 		}
 
-		System.out.println(clip);
-
 		return clip.isRunning();
 	}
 
