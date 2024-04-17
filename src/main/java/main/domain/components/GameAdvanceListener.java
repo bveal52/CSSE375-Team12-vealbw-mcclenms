@@ -24,6 +24,7 @@ public class GameAdvanceListener implements ActionListener {
 		//System.out.println("Current Time " + System.currentTimeMillis());
 		
 		this.component.checkIfEndgame();
+		this.component.checkChangeLevel();
 		this.component.gravity();
 		this.component.momentum();
 		this.component.dragCans();
