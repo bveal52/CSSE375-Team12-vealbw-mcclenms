@@ -26,7 +26,7 @@ public class ClickComponent extends JComponent {
 	private JFrame frame;
 	private JLabel label;
 	private int LevelNumber;
-  private ObjectCreationHandler objectCreationHandler;
+    private ObjectCreationHandler objectCreationHandler;
 	private Scanner levelScanner = new DirectoryLevelScanner();
 	public ArrayList<GameObject> currentObjects;
 	private ArrayList<Enemy> currentEnemies;
@@ -155,9 +155,7 @@ public class ClickComponent extends JComponent {
 
 		try {
 			String[][] levelData = currentLevelReader.readFile("levels/LEVEL" + this.LevelNumber + ".csv");
-
 			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth() / 20, frame.getHeight() / 20, difficulty);
-
 			try {
 				this.currentObjects = objectCreationHandler.createObjects(currentLevelInfo);
 			} catch (Exception e) {

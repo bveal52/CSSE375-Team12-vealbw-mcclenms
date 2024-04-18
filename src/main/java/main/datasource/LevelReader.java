@@ -17,7 +17,7 @@ public class LevelReader implements Reader {
 		Scanner s = new Scanner(file);
 		s.useDelimiter(",");
 
-		String[][] levelData = new String[ARRAY_SIZE][ARRAY_SIZE];
+		String[][] levelData = new String[ARRAY_SIZE][COL_SIZE];
 		for (int row=0; row<ROW_SIZE; row++) {
 			for (int col=0; col<COL_SIZE; col++) {
 				String currentLetter = s.next();
