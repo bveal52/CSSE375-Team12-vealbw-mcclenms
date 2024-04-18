@@ -13,6 +13,7 @@ public class ImageLoader implements Loader {
     private final String level1Filename = "images/level1.jpg";
     private final String level2Filename = "images/level2.jpg";
     private final String level3Filename = "images/level3.jpg";
+    private final String level4Filename = "images/level4.jpg";
     private final String titleScreen = "images/titleImage.jpg";
 
     public BufferedImage loadImage(int levelNumber) throws IOException {
@@ -22,11 +23,13 @@ public class ImageLoader implements Loader {
             return ImageIO.read(new File(level2Filename));
         } else if (levelNumber == 3 ){
             return ImageIO.read(new File(level3Filename));
+        } else if (levelNumber == 4 ){
+            return ImageIO.read(new File(level4Filename));
         } else {
             return ImageIO.read(new File(titleScreen));
         }
 
-    }
+    }   
 
     @Override
     public Clip loadClip(int identifier) throws Exception {

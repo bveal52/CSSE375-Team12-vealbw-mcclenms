@@ -63,6 +63,8 @@ public class ClickComponent extends JComponent {
 		this.LevelNumber = 0;
 		this.difficulty = difficulty;
 
+		
+
 		this.currentObjects = new ArrayList<GameObject>();
 		this.currentEnemies = new ArrayList<Enemy>();
 		this.currentProjectiles = new ArrayList<Projectile>();
