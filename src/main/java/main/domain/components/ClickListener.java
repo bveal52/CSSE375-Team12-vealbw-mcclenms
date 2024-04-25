@@ -68,13 +68,6 @@ public class ClickListener implements KeyListener {
 			} else if (c == KeyEvent.VK_SPACE) {
 				//System.out.println("Pressed Space, Fire!");
 				this.component.playerFire();
-				try {
-					this.component.SwitchLevel(true);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
 				turbolaser.play("images/turbolaser.wav", false);
 			}
 	    }
