@@ -15,6 +15,8 @@ public class Enemy extends GameObject {
 	private int enemyClass;
 	private String E1Filename = "images/enemy1.png";
 	private String E2Filename = "images/enemy2.png";
+	//protected double maxSpeed = 5; // Set this to whatever speed you want for the enemy
+
 	//musicStuff tieLaser = new musicStuff();
 
 	MusicPlayback tieLaser = new MusicPlayback();
@@ -40,7 +42,7 @@ public class Enemy extends GameObject {
 		} else {
 			try {
 				this.setImage(ImageIO.read(new File(E2Filename)));
-				this.maxSpeed = 10;
+				this.maxSpeed = 6;
 				this.setHealth(40);
 				this.setObjectSize(90,70);
 			} catch (IOException e) {
