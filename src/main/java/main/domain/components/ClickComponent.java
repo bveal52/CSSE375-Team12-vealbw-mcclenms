@@ -46,6 +46,8 @@ public class ClickComponent extends JComponent {
 
 	public boolean changeLevel;
 
+	private int currentPlayerHealth = 0;
+
 	public final int NUM_LEVELS = levelScanner.scanner(levelScanner.getDirectory("./levels"));
 
 
@@ -76,7 +78,7 @@ public class ClickComponent extends JComponent {
 		try {
 			this.SwitchLevel(true);
 		} catch (Exception e) {
-			System.out.println("could not find inital level");
+			System.out.println("error in loading level one");
 		}
 		this.gameOver = false;
 
@@ -142,6 +144,10 @@ public class ClickComponent extends JComponent {
 			throw new Exception();
 		}
 
+		if(!(this.LevelNumber == 1)){
+			currentPlayerHealth = this.player.getHealth();
+		}
+
 		// reset game objects
 		this.currentLevelReader = new LevelReader();
 		this.imageLoader = new ImageLoader();
@@ -157,7 +163,8 @@ public class ClickComponent extends JComponent {
 
 		try {
 			String[][] levelData = currentLevelReader.readFile("levels/LEVEL" + this.LevelNumber + ".csv");
-			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth() / 20, frame.getHeight() / 20, difficulty);
+			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth() / 20,
+				frame.getHeight() / 20, difficulty, currentPlayerHealth);
 			try {
 				this.currentObjects = objectCreationHandler.createObjects(currentLevelInfo);
 			} catch (Exception e) {

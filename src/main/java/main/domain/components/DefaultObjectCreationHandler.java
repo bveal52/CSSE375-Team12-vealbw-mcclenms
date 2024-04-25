@@ -49,8 +49,14 @@ public class DefaultObjectCreationHandler implements GameObjectFactory {
 	}
 
 	private Player createPlayer(int col, int row, LevelInfo levelInfo) {
-		return new Player(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), levelInfo.getDifficulty());
-	}
+		if(levelInfo.getCurrentPlayerHealth() == 0) {
+			return new Player(col * levelInfo.getPixelModifierX(),
+				row * levelInfo.getPixelModifierY(), levelInfo.getDifficulty(), 0);
+		}
+		else {
+			return new Player(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), levelInfo.getDifficulty(), levelInfo.getCurrentPlayerHealth());
+		}
+		}
 
 	private Enemy createEnemy(int col, int row, int type, LevelInfo levelInfo) {
 		return new Enemy(col * levelInfo.getPixelModifierX(), row * levelInfo.getPixelModifierY(), type);

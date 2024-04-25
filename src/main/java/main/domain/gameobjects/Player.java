@@ -14,7 +14,7 @@ public class Player extends GameObject {
 	private String imgFilename = "images/fillimium_malcon.png";
 	public boolean fuelCooldown;
 	
-	public Player(int positionX, int positionY, int difficulty) {
+	public Player(int positionX, int positionY, int difficulty, int health) {
 		super(positionX, positionY);
 		this.difficulty = difficulty;
 		this.type = 1;
@@ -22,17 +22,21 @@ public class Player extends GameObject {
 		this.setObjectSize(100,100);
 		this.setSlowable(true);
 
-		if(this.difficulty == 1) {
-			this.setHealth(30);
-		} else if (this.difficulty == 2) {
-			this.setHealth(20);
-		} else if (this.difficulty == 3) {
-			this.setHealth(10);
-		} else {
-			this.setHealth(20);
+		if(health == 0) {
+			if(this.difficulty == 1) {
+				this.setHealth(30);
+			} else if (this.difficulty == 2) {
+				this.setHealth(20);
+			} else if (this.difficulty == 3) {
+				this.setHealth(10);
+			} else {
+				this.setHealth(20);
+			}
 		}
-		
-		
+		else {
+			this.setHealth(health);
+		}
+
 		try {
 			this.setImage(ImageIO.read(new File(imgFilename)));
 		} catch (IOException e) {
