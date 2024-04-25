@@ -269,7 +269,7 @@ public class ClickComponent extends JComponent {
 
 	// gravity
 	public void gravity() {
-		this.player.moveDown();
+		//this.player.moveDown();
 	}
 
 	// continue objects on paths
