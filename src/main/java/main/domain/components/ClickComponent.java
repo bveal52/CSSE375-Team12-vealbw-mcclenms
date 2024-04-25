@@ -144,10 +144,6 @@ public class ClickComponent extends JComponent {
 			throw new Exception();
 		}
 
-		if(!(this.LevelNumber == 1)){
-			currentPlayerHealth = this.player.getHealth();
-		}
-
 		// reset game objects
 		this.currentLevelReader = new LevelReader();
 		this.imageLoader = new ImageLoader();
@@ -163,6 +159,7 @@ public class ClickComponent extends JComponent {
 
 		try {
 			String[][] levelData = currentLevelReader.readFile("levels/LEVEL" + this.LevelNumber + ".csv");
+			System.out.println("Current Player Health: " + currentPlayerHealth);
 			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth() / 20,
 				frame.getHeight() / 20, difficulty, currentPlayerHealth);
 			try {
@@ -225,6 +222,7 @@ public class ClickComponent extends JComponent {
 		// check if ship has left 
 		if (this.bigship.getPositionY() <= 0) {
 			this.gameOver = true;
+			currentPlayerHealth = this.player.getHealth();
 
 		}
 		if (this.gameOver && this.LevelNumber <= NUM_LEVELS) {
