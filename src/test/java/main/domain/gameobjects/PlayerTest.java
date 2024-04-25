@@ -12,7 +12,7 @@ public class PlayerTest {
 
 		assertEquals(10, player.getPositionX());
 		assertEquals(20, player.getPositionY());
-		assertEquals(20, player.getHealth());
+		assertEquals(40, player.getHealth());
 		assertEquals(100, player.getObjectSizeX());
 		assertEquals(100, player.getObjectSizeY());
 	}
@@ -42,7 +42,7 @@ public class PlayerTest {
 		Player player = new Player(10, 20, 20);
 		//increases max speed by 5
 		player.increaseMaxSpeed();
-		assertEquals(17, player.getMaxSpeed());
+		assertEquals(13, player.getMaxSpeed());
 	}
 
 	@Test
@@ -52,6 +52,6 @@ public class PlayerTest {
 		player.increaseMaxSpeed();
 		player.increaseMaxSpeed();
 		player.increaseMaxSpeed();
-		assertEquals(27, player.getMaxSpeed());
+		assertEquals(23, player.getMaxSpeed());
 	}
 }

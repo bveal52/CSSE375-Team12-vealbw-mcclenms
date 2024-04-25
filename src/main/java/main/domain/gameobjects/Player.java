@@ -18,18 +18,18 @@ public class Player extends GameObject {
 		super(positionX, positionY);
 		this.difficulty = difficulty;
 		this.type = 1;
-		this.maxSpeed = 12;
+		this.maxSpeed = 8;
 		this.setObjectSize(100,100);
 		this.setSlowable(true);
 
 		if(this.difficulty == 1) {
-			this.setHealth(30);
+			this.setHealth(60);
 		} else if (this.difficulty == 2) {
-			this.setHealth(20);
+			this.setHealth(40);
 		} else if (this.difficulty == 3) {
-			this.setHealth(10);
-		} else {
 			this.setHealth(20);
+		} else {
+			this.setHealth(40);
 		}
 		
 		
@@ -58,7 +58,7 @@ public class Player extends GameObject {
 		super.moveForwards();
 		
 		
-		if (this.getTotalVelocity() > 10) {
+		if (this.getTotalVelocity() > 6) {
 			this.imgFilename = "images/fillimium_malcon.png";
 		} else {
 			this.imgFilename = "images/fillimium_malconLow.png";

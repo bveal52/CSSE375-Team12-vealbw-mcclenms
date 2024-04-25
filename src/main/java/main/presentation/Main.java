@@ -28,7 +28,7 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	public static final int DELAY=50;
+	public static final int DELAY=1000 / 100;
 
 	public static final int BACKGROUND_MUSIC = 1000;
 
