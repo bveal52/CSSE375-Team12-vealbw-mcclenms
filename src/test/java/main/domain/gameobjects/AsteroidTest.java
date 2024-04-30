@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AsteroidTest {
 
-    // @Test
-    // public void testConstructor() {
-    //     Asteroid asteroid = new Asteroid(10, 20, 0);
+     @Test
+     public void testConstructor() {
+         Asteroid asteroid = new Asteroid(10, 20, 10);
 
-    //     assertEquals(10, asteroid.getPositionX());
-    //     assertEquals(20, asteroid.getPositionY());
-    //     assertEquals(7, asteroid.type);
-    // }
+         assertEquals(10, asteroid.getPositionX());
+         assertEquals(20, asteroid.getPositionY());
+         assertEquals(7, asteroid.type);
+     }
 
-    
 }
