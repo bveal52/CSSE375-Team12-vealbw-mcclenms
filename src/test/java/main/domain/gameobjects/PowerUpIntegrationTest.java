@@ -1,13 +1,12 @@
 package main.domain.gameobjects;
 
 
-import main.domain.gameobjects.PowerUp;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class PowerUpTest {
+public class PowerUpIntegrationTest {
 
     @Test
     public void testConstructor() {
@@ -18,13 +17,10 @@ public class PowerUpTest {
         assertEquals(0, powerUp.getPowerType());
         assertEquals(6, powerUp.type);
 
-        // Check if the image is set for powerType 0
-//        BufferedImage expectedImage = loadImage("images/health.png");
-//        assertEquals(expectedImage, powerUp.getImage());
-
-        // Check if the object size is set for powerType 0
         assertEquals(50, powerUp.getObjectSizeX());
         assertEquals(50, powerUp.getObjectSizeY());
+
+        assertNotNull(powerUp.getImage());
     }
 
     @Test
@@ -36,23 +32,11 @@ public class PowerUpTest {
         assertEquals(1, powerUp.getPowerType());
         assertEquals(6, powerUp.type);
 
-        // Check if the image is set for powerType 1
-//        BufferedImage expectedImage = loadImage("images/speedBoost.png");
-//        assertEquals(expectedImage, powerUp.getImage());
-
-        // Check if the object size is set for powerType 1
         assertEquals(30, powerUp.getObjectSizeX());
         assertEquals(60, powerUp.getObjectSizeY());
+
+        assertNotNull(powerUp.getImage());
     }
 
-    // Helper method to load images for comparison
-//    private BufferedImage loadImage(String filename) {
-//        try {
-//            return ImageIO.read(new File(filename));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
 }
 

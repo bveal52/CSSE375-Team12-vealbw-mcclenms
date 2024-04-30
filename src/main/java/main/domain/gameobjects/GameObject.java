@@ -248,6 +248,10 @@ public abstract class GameObject {
 		this.isMarked = true;
 	}
 
+	protected BufferedImage getImage() {
+		return this.image;
+	}
+
 	
 	
 	

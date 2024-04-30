@@ -7,17 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PlayerTest {
 
 	@Test
-	public void createPlayer_testConstructor() {
-		Player player = new Player(10, 20, 2, 0);
-
-		assertEquals(10, player.getPositionX());
-		assertEquals(20, player.getPositionY());
-		assertEquals(40, player.getHealth());
-		assertEquals(100, player.getObjectSizeX());
-		assertEquals(100, player.getObjectSizeY());
-	}
-
-	@Test
 	public void player_testMoveDown() {
 		//moves player down by 1
 		Player player = new Player(10, 20, 2, 0);

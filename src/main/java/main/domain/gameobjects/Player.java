@@ -1,5 +1,6 @@
 package main.domain.gameobjects;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -108,5 +109,6 @@ public class Player extends GameObject {
 	public int getMaxSpeed() {
 		return this.maxSpeed;
 	}
+
 
 }
