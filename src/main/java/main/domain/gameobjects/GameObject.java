@@ -140,11 +140,11 @@ public abstract class GameObject {
 		if (this.isSlowable == true) {
 			// X
 			if (this.velocityX > 0) {
-				this.velocityX -= 0.1;
+				this.velocityX -= 0.05;
 			} else if (this.velocityX == 0) {
 				// nothing
 			} else {
-				this.velocityX += 0.1;
+				this.velocityX += 0.05;
 			}
 			
 			// Y

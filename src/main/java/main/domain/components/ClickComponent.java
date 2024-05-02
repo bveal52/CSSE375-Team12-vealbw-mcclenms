@@ -226,7 +226,6 @@ public class ClickComponent extends JComponent {
 
 		}
 		if (this.gameOver && this.LevelNumber <= NUM_LEVELS) {
-			System.out.println("game over");
 			if (this.fuel == 3) {
 				changeLevel = true;
 			} else {

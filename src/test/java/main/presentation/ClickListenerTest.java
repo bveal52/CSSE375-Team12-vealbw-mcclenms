@@ -1,6 +1,9 @@
-package main.domain.components;
+package main.presentation;
 
 import java.awt.event.KeyEvent;
+
+import main.domain.components.ClickComponent;
+import main.presentation.ClickListener;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.BeforeEach;
