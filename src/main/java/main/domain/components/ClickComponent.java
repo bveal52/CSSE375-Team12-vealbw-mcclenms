@@ -430,7 +430,10 @@ public class ClickComponent extends JComponent {
 
 	// redraw 
 	public void drawScreen() {
-		this.label.setText("HEALTH:  " + (this.player.getHealth() - 1) + "        MOTHERSHIP FUEL: " + this.fuel + "/3 " + "        ENEMIES REMAINING: " + this.currentEnemies.size() + "        SCORE: " + this.points);
+		this.label.setText("HEALTH:  " + (this.player.getHealth() - 1) + 
+		"        MOTHERSHIP FUEL: " + this.fuel + "/3 " + 
+		"        ENEMIES REMAINING: " + this.currentEnemies.size() + 
+		"        SCORE: " + this.points);
 
 		if (this.gameOver == false) {
 			this.repaint();
