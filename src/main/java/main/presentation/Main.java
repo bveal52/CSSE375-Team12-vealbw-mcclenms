@@ -48,15 +48,19 @@ public class Main {
 		frameManager.loadBackgroundImage(frame, layeredPane);
 		frameManager.createTitleLabel(layeredPane);
 
-		JButton easyButton = frameManager.createDifficultyButton("Start Game: Easy", 600);
+		JButton easyButton = frameManager.createDifficultyButton("Start Game: Easy", 650);
 
-		JButton mediumButton = frameManager.createDifficultyButton("Start Game: Medium", 650);
+		JButton mediumButton = frameManager.createDifficultyButton("Start Game: Medium", 700);
 
-		JButton hardButton = frameManager.createDifficultyButton("Start Game: Hard", 700);
+		JButton hardButton = frameManager.createDifficultyButton("Start Game: Hard", 750);
+
+		JButton howToPlayButton = frameManager.createDifficultyButton("How to Play", 600);
+
 
 		layeredPane.add(easyButton, JLayeredPane.PALETTE_LAYER);
 		layeredPane.add(mediumButton, JLayeredPane.PALETTE_LAYER);
 		layeredPane.add(hardButton, JLayeredPane.PALETTE_LAYER);
+		layeredPane.add(howToPlayButton, JLayeredPane.PALETTE_LAYER);
 
 		// Add action listeners to start the game
 		easyButton.addActionListener((ActionEvent e) -> {
@@ -70,6 +74,13 @@ public class Main {
 		hardButton.addActionListener((ActionEvent e) -> {
 			startGame(frame, layeredPane, 3);
 		});
+
+		howToPlayButton.addActionListener((ActionEvent e) -> {
+			// Open a joptionpane with instructions
+			JOptionPane.showMessageDialog(frame, "Use the arrow keys to move the ship\nPress space to shoot\nAvoid asteroids and enemy ships\nCollect powerups to increase your health or speed\nRepair the mothership and then fuel it to win the game\n\nGood luck!");
+		});
+
+
 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
