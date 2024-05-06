@@ -2,7 +2,6 @@ package main.presentation;
 
 import main.datasource.MusicPlayback;
 import main.domain.components.ClickComponent;
-import main.domain.components.ClickListener;
 import main.domain.components.GameAdvanceListener;
 
 import javax.swing.*;
@@ -97,13 +96,13 @@ public class Main {
 
 		frameManager.setupFrameResizing(frame, component);
 
-		
-
-		//add key listener
-		KeyListener keys = new ClickListener(component);
-
 		//add game advance listener
 		GameAdvanceListener advanceListener = new GameAdvanceListener(component);
+
+
+		Timer timer = new Timer(DELAY, advanceListener);
+		//add key listener
+		KeyListener keys = new ClickListener(component, timer);
 
 		//add music
 		//musicStuff levelOST = new musicStuff();
@@ -119,7 +118,6 @@ public class Main {
 		frame.requestFocusInWindow();
 
 		//start the game
-		Timer timer = new Timer(DELAY, advanceListener);
 		timer.start();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
