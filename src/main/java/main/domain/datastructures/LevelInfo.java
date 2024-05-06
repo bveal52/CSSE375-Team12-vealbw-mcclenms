@@ -9,13 +9,16 @@ public class LevelInfo {
 
 	private int currentPlayerHealth;
 
+	private int currentPlayerPoints;
+
 	public LevelInfo(String[][] levelData, int pixelModifierX, int pixelModifierY, int difficulty
-		, int currentPlayerHealth) {
+		, int currentPlayerHealth, int currentPlayerPoints) {
 		this.levelData = levelData;
 		this.pixelModifierX = pixelModifierX;
 		this.pixelModifierY = pixelModifierY;
 		this.difficulty = difficulty;
 		this.currentPlayerHealth = currentPlayerHealth;
+		this.currentPlayerPoints = currentPlayerPoints;
 
 	}
 
@@ -37,6 +40,10 @@ public class LevelInfo {
 
 	public int getCurrentPlayerHealth() {
 		return currentPlayerHealth;
+	}
+
+	public int getCurrentPlayerPoints() {
+		return currentPlayerPoints;
 	}
 
 }
