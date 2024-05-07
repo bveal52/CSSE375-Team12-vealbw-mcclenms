@@ -4,11 +4,13 @@ import main.domain.gameobjects.BigShip;
 import main.domain.gameobjects.Player;
 import main.domain.gameobjects.Projectile;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled("Disabled since GitHub cannot test GUI components")
 class ClickComponentTest {
 
     private ClickComponent clickComponent;
