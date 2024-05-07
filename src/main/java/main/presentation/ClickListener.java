@@ -28,7 +28,7 @@ public class ClickListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent input) {
-        System.out.println("Key Pressed!");
+        //System.out.println("Key Pressed!");
 
         int c =
             input.getKeyCode(); // disclaimer -> the technique used for multiple inputs at the same time is taken from https://stackoverflow.com/questions/22580933/diagonal-movement-of-a-sprite
@@ -45,27 +45,35 @@ public class ClickListener implements KeyListener {
             if (array[0] == KeyEvent.VK_SPACE && array[1] == KeyEvent.VK_LEFT) {
                 this.component.left();
                 this.component.playerFire();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_SPACE && array[1] == KeyEvent.VK_RIGHT) {
                 this.component.right();
                 this.component.playerFire();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_SPACE && array[1] == KeyEvent.VK_UP) {
                 this.component.up();
                 this.component.playerFire();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_SPACE && array[1] == KeyEvent.VK_DOWN) {
                 this.component.down();
                 this.component.playerFire();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_LEFT && array[1] == KeyEvent.VK_UP) {
                 this.component.up();
                 this.component.left();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_UP && array[1] == KeyEvent.VK_RIGHT) {
                 this.component.up();
                 this.component.right();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_RIGHT && array[1] == KeyEvent.VK_DOWN) {
                 this.component.down();
                 this.component.right();
+                this.component.drawScreen();
             } else if (array[0] == KeyEvent.VK_LEFT && array[1] == KeyEvent.VK_DOWN) {
                 this.component.down();
                 this.component.left();
+                this.component.drawScreen();
             }
         } else {
             if(c == KeyEvent.VK_W || c == KeyEvent.VK_A || c == KeyEvent.VK_S || c == KeyEvent.VK_D) {
@@ -101,8 +109,8 @@ public class ClickListener implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("Key Released!");
-        pressed.remove(Integer.valueOf(e.getKeyCode()));
+        //System.out.println("Key Released!");
+        pressed.remove(e.getKeyCode());
     }
 
     @Override
