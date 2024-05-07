@@ -217,7 +217,7 @@ public class ClickComponent extends JComponent {
 	// check for endgame 
 	public void checkIfEndgame() {
 		// check if player is dead
-		if (this.player.getHealth() <= 1) {
+		if (this.player.getHealth() < 1) {
 			this.gameOver = true;
 		}
 
@@ -498,4 +498,55 @@ public class ClickComponent extends JComponent {
 		this.changeLevel = changeLevel;
 	}
 
+	protected Object getCurrentObjects() {
+		return currentObjects;
+	}
+
+	protected int getLevelNumber() {
+		return LevelNumber;
+	}
+
+	//get Current Enemies
+	protected ArrayList<Enemy> getCurrentEnemies() {
+		return currentEnemies;
+	}
+
+	//get Current Fuel
+	protected ArrayList<Fuel> getCurrentFuel() {
+		return currentFuel;
+	}
+
+	//get Current PowerUps
+	protected ArrayList<PowerUp> getCurrentPowerUps() {
+		return currentPowerUps;
+	}
+
+	//get Current Asteroids
+	protected ArrayList<Asteroid> getCurrentAsteroids() {
+		return currentAsteroids;
+	}
+
+	protected boolean isGameOver() {
+		return gameOver;
+	}
+
+	protected void setFuel(int i) {
+		this.fuel = i;
+	}
+
+	protected GameObject getBigShip() {
+		return this.bigship;
+	}
+
+	protected Object getNumLevels() {
+		return NUM_LEVELS;
+	}
+
+	protected void setLevelNumber(Object numLevels) {
+		this.LevelNumber = (int) numLevels;
+	}
+
+	protected void setGameOver(boolean b) {
+		this.gameOver = b;
+	}
 }
