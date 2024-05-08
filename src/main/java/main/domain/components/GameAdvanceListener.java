@@ -34,4 +34,6 @@ public class GameAdvanceListener implements ActionListener {
 		this.component.devourTheMarked();
 	}
 
+	//if this.component.checkIfEndgame() == true, then the game is over, stop the listner
+
 }

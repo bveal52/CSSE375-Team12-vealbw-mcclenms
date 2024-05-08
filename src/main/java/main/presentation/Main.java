@@ -91,6 +91,7 @@ public class Main {
 		frame.remove(titlePanel);
 		JLabel gameLabel = new JLabel("Game Panel");
 
+
 		// add game panel
 		ClickComponent component = new ClickComponent(frame, gameLabel, difficulty);
 
@@ -99,8 +100,10 @@ public class Main {
 		//add game advance listener
 		GameAdvanceListener advanceListener = new GameAdvanceListener(component);
 
-
 		Timer timer = new Timer(DELAY, advanceListener);
+
+		component.setTimer(timer);
+
 		//add key listener
 		KeyListener keys = new ClickListener(component, timer);
 
