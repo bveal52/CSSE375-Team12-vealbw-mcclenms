@@ -27,11 +27,14 @@ public class ClickListener implements KeyListener {
 		int c = input.getKeyCode(); // disclaimer -> the technique used for multiple inputs at the same time is taken from https://stackoverflow.com/questions/22580933/diagonal-movement-of-a-sprite
 	    pressed.add(c);
 
+		
+
 	    if (pressed.size() > 1) {
 	        Integer[] array = pressed.toArray(new Integer[] {});
 	        if (array[0] == KeyEvent.VK_SPACE  && array[1] == KeyEvent.VK_LEFT) {
 	           this.component.left();
 	           this.component.playerFire();
+
 	           
 	           
 	        } else if (array[0] == KeyEvent.VK_SPACE && array[1] == KeyEvent.VK_RIGHT) {
@@ -71,6 +74,8 @@ public class ClickListener implements KeyListener {
 				turbolaser.play("images/turbolaser.wav", false);
 			}
 	    }
+
+		System.out.println("Key Pressed!");
 	    
 		
 		
