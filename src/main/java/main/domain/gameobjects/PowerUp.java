@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class PowerUp extends GameObject {
 	
-	private String P1Filename = "images/health.png";
+	private String P1Filename = "images/health-yellow.png";
 	private String P2Filename = "images/speedBoost.png";
 	private int powerType;
 	

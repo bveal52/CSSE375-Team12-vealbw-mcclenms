@@ -46,6 +46,10 @@ public class ClickComponent extends JComponent {
 
 	public boolean changeLevel;
 
+	private int currentPlayerHealth = 0;
+
+	private int currentPlayerPoints = 0;
+
 	public final int NUM_LEVELS = levelScanner.scanner(levelScanner.getDirectory("./levels"));
 
 
@@ -76,7 +80,7 @@ public class ClickComponent extends JComponent {
 		try {
 			this.SwitchLevel(true);
 		} catch (Exception e) {
-			System.out.println("could not find inital level");
+			System.out.println("error in loading level one");
 		}
 		this.gameOver = false;
 
@@ -157,7 +161,9 @@ public class ClickComponent extends JComponent {
 
 		try {
 			String[][] levelData = currentLevelReader.readFile("levels/LEVEL" + this.LevelNumber + ".csv");
-			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth() / 20, frame.getHeight() / 20, difficulty);
+			//System.out.println("Current Player Health: " + currentPlayerHealth);
+			LevelInfo currentLevelInfo = new LevelInfo(levelData, frame.getWidth() / 20,
+				frame.getHeight() / 20, difficulty, currentPlayerHealth, currentPlayerPoints);
 			try {
 				this.currentObjects = objectCreationHandler.createObjects(currentLevelInfo);
 			} catch (Exception e) {
@@ -190,6 +196,14 @@ public class ClickComponent extends JComponent {
 			}
 		}
 
+		//set points from player
+		if(player.getPoints() != 0) {
+			this.points = player.getPoints();
+			System.out.println("Current Points Set: " + this.points);
+		}
+
+		System.out.println("Current Points: " + this.points);
+
 		// exception to designate a special uncompleted ship in the first level
 		if (this.LevelNumber == 1) {
 			this.bigship.setImageCompletion(0);
@@ -203,7 +217,7 @@ public class ClickComponent extends JComponent {
 	// check for endgame 
 	public void checkIfEndgame() {
 		// check if player is dead
-		if (this.player.getHealth() <= 1) {
+		if (this.player.getHealth() < 1) {
 			this.gameOver = true;
 		}
 
@@ -218,10 +232,11 @@ public class ClickComponent extends JComponent {
 		// check if ship has left 
 		if (this.bigship.getPositionY() <= 0) {
 			this.gameOver = true;
+			currentPlayerHealth = this.player.getHealth();
+			currentPlayerPoints = this.points;
 
 		}
 		if (this.gameOver && this.LevelNumber <= NUM_LEVELS) {
-			System.out.println("game over");
 			if (this.fuel == 3) {
 				changeLevel = true;
 			} else {
@@ -483,4 +498,55 @@ public class ClickComponent extends JComponent {
 		this.changeLevel = changeLevel;
 	}
 
+	protected Object getCurrentObjects() {
+		return currentObjects;
+	}
+
+	protected int getLevelNumber() {
+		return LevelNumber;
+	}
+
+	//get Current Enemies
+	protected ArrayList<Enemy> getCurrentEnemies() {
+		return currentEnemies;
+	}
+
+	//get Current Fuel
+	protected ArrayList<Fuel> getCurrentFuel() {
+		return currentFuel;
+	}
+
+	//get Current PowerUps
+	protected ArrayList<PowerUp> getCurrentPowerUps() {
+		return currentPowerUps;
+	}
+
+	//get Current Asteroids
+	protected ArrayList<Asteroid> getCurrentAsteroids() {
+		return currentAsteroids;
+	}
+
+	protected boolean isGameOver() {
+		return gameOver;
+	}
+
+	protected void setFuel(int i) {
+		this.fuel = i;
+	}
+
+	protected GameObject getBigShip() {
+		return this.bigship;
+	}
+
+	protected Object getNumLevels() {
+		return NUM_LEVELS;
+	}
+
+	protected void setLevelNumber(Object numLevels) {
+		this.LevelNumber = (int) numLevels;
+	}
+
+	protected void setGameOver(boolean b) {
+		this.gameOver = b;
+	}
 }

@@ -26,7 +26,8 @@ public class ObjectCreationHandlerTest {
 		int pixelModifierY = 0;
 		int difficulty = 2;
 
-		LevelInfo levelInfo = new LevelInfo(levelData, pixelModifierX, pixelModifierY, difficulty);
+		LevelInfo levelInfo = new LevelInfo(levelData, pixelModifierX, pixelModifierY, difficulty
+			, 20, 0);
 
 		ArrayList<GameObject> objects = handler.createObjects(levelInfo);
 
@@ -70,7 +71,8 @@ public class ObjectCreationHandlerTest {
 		int pixelModifierY = 0;
 		int difficulty = 2;
 
-		LevelInfo levelInfo = new LevelInfo(levelData, pixelModifierX, pixelModifierY, difficulty);
+		LevelInfo levelInfo = new LevelInfo(levelData, pixelModifierX, pixelModifierY, difficulty
+			, 20, 0);
 
 		ArrayList<GameObject> objects = handler.createObjects(levelInfo);
 

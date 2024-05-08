@@ -4,8 +4,9 @@ package main.domain.gameobjects;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class EnemyTest {
+public class EnemyIntegrationTest {
 
 	@Test
 	public void createEnemy_testConstructorType0() {
@@ -17,6 +18,8 @@ public class EnemyTest {
 		assertEquals(70, enemy.getObjectSizeY());
 		assertEquals(0, enemy.getEnemyClass());
 		assertEquals(2, enemy.type);
+
+		assertNotNull(enemy.getImage());
 	}
 
 	@Test
@@ -29,5 +32,7 @@ public class EnemyTest {
 		assertEquals(70, enemy.getObjectSizeY());
 		assertEquals(1, enemy.getEnemyClass());
 		assertEquals(2, enemy.type);
+
+		assertNotNull(enemy.getImage());
 	}
 }

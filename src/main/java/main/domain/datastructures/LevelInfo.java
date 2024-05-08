@@ -7,11 +7,19 @@ public class LevelInfo {
 	private int pixelModifierY;
 	private int difficulty;
 
-	public LevelInfo(String[][] levelData, int pixelModifierX, int pixelModifierY, int difficulty) {
+	private int currentPlayerHealth;
+
+	private int currentPlayerPoints;
+
+	public LevelInfo(String[][] levelData, int pixelModifierX, int pixelModifierY, int difficulty
+		, int currentPlayerHealth, int currentPlayerPoints) {
 		this.levelData = levelData;
 		this.pixelModifierX = pixelModifierX;
 		this.pixelModifierY = pixelModifierY;
 		this.difficulty = difficulty;
+		this.currentPlayerHealth = currentPlayerHealth;
+		this.currentPlayerPoints = currentPlayerPoints;
+
 	}
 
 	public String[][] getLevelData() {
@@ -28,6 +36,14 @@ public class LevelInfo {
 
 	public int getDifficulty() {
 		return difficulty;
+	}
+
+	public int getCurrentPlayerHealth() {
+		return currentPlayerHealth;
+	}
+
+	public int getCurrentPlayerPoints() {
+		return currentPlayerPoints;
 	}
 
 }

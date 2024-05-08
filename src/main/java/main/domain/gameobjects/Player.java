@@ -1,5 +1,6 @@
 package main.domain.gameobjects;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,8 +14,10 @@ public class Player extends GameObject {
 
 	private String imgFilename = "images/fillimium_malcon.png";
 	public boolean fuelCooldown;
+
+	private int points;
 	
-	public Player(int positionX, int positionY, int difficulty) {
+	public Player(int positionX, int positionY, int difficulty, int health) {
 		super(positionX, positionY);
 		this.difficulty = difficulty;
 		this.type = 1;
@@ -22,23 +25,58 @@ public class Player extends GameObject {
 		this.setObjectSize(100,100);
 		this.setSlowable(true);
 
-		if(this.difficulty == 1) {
-			this.setHealth(60);
-		} else if (this.difficulty == 2) {
-			this.setHealth(40);
-		} else if (this.difficulty == 3) {
-			this.setHealth(20);
-		} else {
-			this.setHealth(40);
+		if(health == 0) {
+			if(this.difficulty == 1) {
+				this.setHealth(60);
+			} else if (this.difficulty == 2) {
+				this.setHealth(40);
+			} else if (this.difficulty == 3) {
+				this.setHealth(20);
+			} else {
+				this.setHealth(40);
+			}
 		}
-		
-		
+		else {
+			this.setHealth(health);
+		}
+
 		try {
 			this.setImage(ImageIO.read(new File(imgFilename)));
 		} catch (IOException e) {
 			System.out.println("playermodel not found!");
 		}
 		
+	}
+
+	public Player(int positionX, int positionY, int difficulty, int health, int points) {
+		super(positionX, positionY);
+		this.difficulty = difficulty;
+		this.points = points;
+		this.type = 1;
+		this.maxSpeed = 8;
+		this.setObjectSize(100,100);
+		this.setSlowable(true);
+
+		if(health == 0) {
+			if(this.difficulty == 1) {
+				this.setHealth(60);
+			} else if (this.difficulty == 2) {
+				this.setHealth(40);
+			} else if (this.difficulty == 3) {
+				this.setHealth(20);
+			} else {
+				this.setHealth(40);
+			}
+		}
+		else {
+			this.setHealth(health);
+		}
+
+		try {
+			this.setImage(ImageIO.read(new File(imgFilename)));
+		} catch (IOException e) {
+			System.out.println("playermodel not found!");
+		}
 	}
 
 	@Override
@@ -104,5 +142,10 @@ public class Player extends GameObject {
 	public int getMaxSpeed() {
 		return this.maxSpeed;
 	}
+
+	public int getPoints() {
+		return this.points;
+	}
+
 
 }
