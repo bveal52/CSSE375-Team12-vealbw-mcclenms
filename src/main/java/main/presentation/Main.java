@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage;
  * 
  * Also don't forget to write javadocs for your classes and functions!
  * 
- * @author YOUR_NAME
+ * @author Matthew McClenahan and Brady Veal
  *
  */
 public class Main {
