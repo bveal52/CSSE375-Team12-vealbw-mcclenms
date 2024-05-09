@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 
 public class ClickComponent extends JComponent {
@@ -60,6 +61,8 @@ public class ClickComponent extends JComponent {
 	 * @param GUIlabel
 	 */
 
+	private Timer timer;
+
 
 	public ClickComponent(JFrame frame, JLabel GUIlabel, int difficulty) {
 		this.frame = frame;
@@ -85,6 +88,10 @@ public class ClickComponent extends JComponent {
 		this.gameOver = false;
 
 		this.label.setText("check, one , two ,three...");
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 
 	public JFrame getFrame() {
@@ -217,8 +224,10 @@ public class ClickComponent extends JComponent {
 	// check for endgame 
 	public void checkIfEndgame() {
 		// check if player is dead
-		if (this.player.getHealth() < 1) {
+		if (this.player.getHealth() <= 1) {
 			this.gameOver = true;
+			//stop the game
+
 		}
 
 		// trigger ship leaving
@@ -242,6 +251,11 @@ public class ClickComponent extends JComponent {
 			} else {
 				try {
 					background = ImageIO.read(new File("images/loseImage.png"));
+					//clear the objects
+					this.currentObjects.clear();
+					//stop firing lasers
+					this.currentProjectiles.clear();
+					timer.stop();
 				} catch (IOException e) {
 					System.out.println("no loss background");
 				}
@@ -258,6 +272,11 @@ public class ClickComponent extends JComponent {
 		else if(this.gameOver && this.fuel != 3) {
 			try {
 				background = ImageIO.read(new File("images/loseImage.png"));
+				//clear the objects
+				this.currentObjects.clear();
+				//stop firing lasers
+				this.currentProjectiles.clear();
+				timer.stop();
 			} catch (IOException e) {
 				System.out.println("no loss background");
 			}
