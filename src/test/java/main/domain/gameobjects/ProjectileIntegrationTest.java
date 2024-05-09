@@ -2,13 +2,12 @@ package main.domain.gameobjects;
 
 
 
-import main.domain.gameobjects.Projectile;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class ProjectileTest {
+public class ProjectileIntegrationTest {
 
     @Test
     public void testConstructorWithRedLaser() {
@@ -26,6 +25,5 @@ public class ProjectileTest {
         assertEquals(3, greenProjectile.type);
     }
 
-    // You can add more test cases as needed
 }
 

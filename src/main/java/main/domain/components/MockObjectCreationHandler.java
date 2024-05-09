@@ -15,7 +15,7 @@ public class MockObjectCreationHandler implements GameObjectFactory {
 		//for the sake of testing, only test the creation of a single type of object. Can add more types if needed
 		switch (type) {
 			case "Player":
-				gameObject = new Player(col, row, levelInfo.getDifficulty());
+				gameObject = new Player(col, row, levelInfo.getDifficulty(), 0);
 				break;
 			default:
 				break;

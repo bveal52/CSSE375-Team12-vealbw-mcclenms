@@ -16,12 +16,13 @@ public class LevelReaderTest {
 //
 //        String[][] actual = levelReader.readFile("levels/LEVEL1.csv");
 //
-//        for (int i = 0; i < expected.length; i++) {
-//            for (int j = 0; j < expected[i].length; j++) {
-//                assertEquals(expected[i][j], actual[i][j]);
-//            }
-//        }
-
+//		//skip the first row, then compare that arrays are equal
+//		for (int i = 1; i < expected.length - 1; i++) {
+//			for(int j = 0; j < expected[i].length; j++) {
+//				assertEquals(expected[i][j], actual[i][j]);
+//			}
+//		}
+//
 
 	}
 
